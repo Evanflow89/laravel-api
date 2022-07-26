@@ -18,7 +18,7 @@
                 <h5>Tags</h5>
                 <ul>
                 @foreach ($post->tags as $tag)
-                    <li>{{$tag}}</li>
+                    <li>{{$tag->name}}</li>
                 @endforeach
             </ul>
             </div>

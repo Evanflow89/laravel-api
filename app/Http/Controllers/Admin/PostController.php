@@ -28,11 +28,14 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Post $post)
     {
         $categories = Category::all();
         $tags = Tag::all();
-        return view('admin.posts.create', compact('categories', 'tags'));
+        $postTags = $post->tags->map(function($item) {
+            return $item->id;
+        })->toArray();
+        return view('admin.posts.create', compact('categories', 'tags', 'postTags'));
     }
 
     /**
